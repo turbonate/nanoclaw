@@ -227,6 +227,14 @@ function buildContainerArgs(
     `ANTHROPIC_BASE_URL=http://${CONTAINER_HOST_GATEWAY}:${CREDENTIAL_PROXY_PORT}`,
   );
 
+  // Pass Ollama configuration if present
+  if (process.env.OLLAMA_HOST) {
+    args.push('-e', `OLLAMA_HOST=${process.env.OLLAMA_HOST}`);
+  }
+  if (process.env.OLLAMA_MODEL) {
+    args.push('-e', `OLLAMA_MODEL=${process.env.OLLAMA_MODEL}`);
+  }
+
   // Mirror the host's auth method with a placeholder value.
   // API key mode: SDK sends x-api-key, proxy replaces with real key.
   // OAuth mode:   SDK exchanges placeholder token for temp API key,

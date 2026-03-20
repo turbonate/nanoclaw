@@ -6,6 +6,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "build:bedrock": "tsc && cp dist/bedrock-index.js dist/index.js",
+    "build:ollama": "tsc && cp dist/ollama-index.js dist/index.js",
     "start": "node dist/index.js"
   },
   "dependencies": {
